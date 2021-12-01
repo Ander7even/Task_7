@@ -16,7 +16,8 @@ namespace Task_7
             double y1 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите сторону Z первого треугольника");
             double z1 = Convert.ToDouble(Console.ReadLine());
-
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("Введите сторону Х второго треугольника");
             double x2 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите сторону Y второго треугольника");
@@ -24,8 +25,8 @@ namespace Task_7
             Console.WriteLine("Введите сторону Z второго треугольника");
             double z2 = Convert.ToDouble(Console.ReadLine());
 
-            double p1, S1;
-            double p2, S2;
+            double S1;
+            double S2;
 
             if (x1 > y1 + z1 || y1 > x1 + z1 || z1 > x1 + y1)                                     //проверка на существование треугольника №1
             {
@@ -33,7 +34,7 @@ namespace Task_7
             }
             else
             {
-                GetParam1(x1, y1, z1, out p1, out S1);
+                S1 = GetParam(x1, y1, z1);
             }
 
             if (x2 > y2 + z2 || y2 > x2 + z2 || z2 > x2 + y2)                                     //проверка на существование треугольника №2
@@ -42,46 +43,40 @@ namespace Task_7
             }
             else
             {
-                GetParam2(x2, y2, z2, out p2, out S2);
+                S2 = GetParam(x2, y2, z2);
             }
 
+            S1 = GetParam(x1, y1, z1);
+            S2 = GetParam(x2, y2, z2);
 
-            GetParam1(x1, y1, z1, out p1, out S1);
-            GetParam2(x2, y2, z2, out p2, out S2);
-
-            if (S1==S2)                                                                             // сравнение площадей треугольников
+            if (S1 == S2)                                                                             // сравнение площадей треугольников
             {
-                Console.WriteLine("Площади треугольников №1 и №2 равны S1= S2= {0:0.00}", S1);
+                Console.WriteLine("Площади треугольников №1 и №2 равны:\nS1= S2= {0:0.00}", S1);
             }
 
-            if (S1>S2)                                                                               // сравнение площадей треугольников
+            if (S1 > S2)                                                                               // сравнение площадей треугольников
             {
-                Console.WriteLine("Площадь треугольника №1 больше:\n S1= {0:0.00}\n S2= {1:0.00}", S1,S2);
+                Console.WriteLine("Площадь треугольника №1 больше:\n S1= {0:0.00}\n S2= {1:0.00}", S1, S2);
             }
 
-            if (S2>S1)                                                                                 // сравнение площадей треугольников
+            if (S2 > S1)                                                                                 // сравнение площадей треугольников
             {
                 Console.WriteLine("Площадь треугольника №2 больше:\n S1= {0:0.00}\n S2= {1:0.00}", S1, S2);
             }
 
-            
+
             Console.ReadKey();
         }
 
-        static void GetParam1(double x1, double y1, double z1, out double p1, out double S1)   // метод нахождения площади для треугольника №1              
-        {
-                        
-            p1 = (x1 + y1 + z1) / 2;
-            S1 = Math.Sqrt(p1 * (p1 - x1) * (p1 - y1) * (p1 - z1));
-
-        }                 
-
-        static void GetParam2(double x2, double y2, double z2, out double p2, out double S2)  // метод нахождения площади для треугольника №2
+        static double GetParam(double x, double y, double z)   // метод нахождения площади треугольника           
         {
 
-            p2 = (x2 + y2 + z2) / 2;
-            S2 = Math.Sqrt(p2 * (p2 - x2) * (p2 - y2) * (p2 - z2));
-        }                
+            double p = (x + y + z) / 2;
+            double S = Math.Sqrt(p * (p - x) * (p - y) * (p - z));
+            return S;
+        }
+
+       
 
     }
 }
