@@ -10,7 +10,7 @@ namespace Task_7._2
     {
         static void Main(string[] args) //метод нахождения площади граней и объема куба по длине его ребра
         {
-            Console.WriteLine("Введите длину ребра куба");                       // ввод данных
+            Console.WriteLine("Введите длину ребра куба");                      
             double a = Convert.ToDouble(Console.ReadLine());
             double S, V;
 
